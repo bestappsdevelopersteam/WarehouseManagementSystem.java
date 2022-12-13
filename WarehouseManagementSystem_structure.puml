@@ -1,0 +1,275 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.warehouse.WarehouseManagementSystem",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1997587773 { 
+   	label=warehouse
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   WarehouseManagementSystem1714676374[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)WarehouseManagementSystem</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+subgraph cluster_1141924214 { 
+   	label=service
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   CustomerServiceImpl301677731[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CustomerServiceImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addProductToShoppingBasket(productId: int, products: List&lt;Product&gt;, quantity: int, shoppingBasket: ShoppingBasket)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ calculateShoppingBasketPrice(shoppingBasket: ShoppingBasket)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProducts(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printMenu()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchProductByCategory(category: String, products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchProductByName(name: String, products: List&lt;Product&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EmployeeServiceImpl301677731[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EmployeeServiceImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addProduct(products: List&lt;Product&gt;, product: Product)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeProductName(products: List&lt;Product&gt;, productId: int, name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeProductPrice(products: List&lt;Product&gt;, productId: int, price: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeProductQuantity(products: List&lt;Product&gt;, productId: int, quantity: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- printAllEmployees(employees: List&lt;Employee&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProducts(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsSortedByExpiresIn(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsSortedByName(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsSortedByPrice(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsWithPriceHigherThanCurrent(products: List&lt;Product&gt;, price: Double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsWithPriceLowerThanCurrent(products: List&lt;Product&gt;, price: Double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsWithQuantityHigherThanCurrent(products: List&lt;Product&gt;, quantity: Integer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAllProductsWithQuantityLowerThanCurrent(products: List&lt;Product&gt;, quantity: Integer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printEmployeesSortedByName(employees: List&lt;Employee&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printEmployeesSortedBySalary(employees: List&lt;Employee&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printMenu()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printProduct(products: List&lt;Product&gt;, id: int, productName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeProduct(products: List&lt;Product&gt;, productId: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FileOrganizatorServiceImpl301677731[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FileOrganizatorServiceImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getEmployees(fileName: String): List&lt;Employee&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getProducts(fileName: String): List&lt;Product&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFile(name: String, isEmployeeFile: boolean): List&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeProductsIntoFile(products: List&lt;Product&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+WarehouseMenuSelectorImpl301677731[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)WarehouseMenuSelectorImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   customerService: CustomerService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   employeeService: EmployeeService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sc: Scanner [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addProduct(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- addProductToShoppingBasket(products: List&lt;Product&gt;, shoppingBasket: ShoppingBasket)</TD></TR>
+<TR><TD ALIGN="LEFT" >- changeProduct(products: List&lt;Product&gt;, isPriceChanged: boolean, isQuantityChanged: boolean, isNameChanged: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >- printAllProductsByPrice(products: List&lt;Product&gt;, isPriceHigher: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >- printAllProductsByQuantity(products: List&lt;Product&gt;, isQuantityHigher: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >- printProduct(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- removeProduct(products: List&lt;Product&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- searchProduct(products: List&lt;Product&gt;, isSearchedByName: boolean, isSearchedByCategory: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ selectOption(optionNumber: int, isEmployee: boolean, warehouse: Warehouse, customer: Customer)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+WarehouseServiceImpl301677731[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)WarehouseServiceImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   customerService: CustomerService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   employeeService: EmployeeService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fileOrganizatorService: FileOrganizatorService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sc: Scanner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   warehouseMenuSelector: WarehouseMenuSelector [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- buildWarehouse(): Warehouse</TD></TR>
+<TR><TD ALIGN="LEFT" >- isNeedToBeRepeat(isCustomer: boolean): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loginInWarehouse()</TD></TR>
+<TR><TD ALIGN="LEFT" >- processMenu(option: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- selectOptions(input: String, warehouse: Warehouse)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ validateInput(input: String, isEmployee: boolean): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1260569234 { 
+   	label=entity
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Employee1510559173[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Employee</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   age: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   employee_id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   first_name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   last_name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   salary: Double [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ createEmployee(attributes: String[]): Employee</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Product1510559173[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Product</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   color: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   expires_in: LocalDate [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   price: Double [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   product_id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quantity: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ createProduct(attributes: String[]): Product</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+FileOrganizatorServiceImpl301677731 -> Employee1510559173[label="getEmployees() -> createEmployee()"];
+FileOrganizatorServiceImpl301677731 -> Product1510559173[label="getProducts() -> createProduct()"];
+WarehouseManagementSystem1714676374 -> WarehouseServiceImpl301677731[arrowhead=none];
+WarehouseMenuSelectorImpl301677731 -> CustomerServiceImpl301677731[arrowhead=none];
+WarehouseMenuSelectorImpl301677731 -> EmployeeServiceImpl301677731[arrowhead=none];
+WarehouseServiceImpl301677731 -> FileOrganizatorServiceImpl301677731[arrowhead=none];
+WarehouseServiceImpl301677731 -> WarehouseMenuSelectorImpl301677731[arrowhead=none];
+    
+}
+@enduml
