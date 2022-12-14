@@ -98,7 +98,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     		String input = sc.nextLine();
             return !"Y".equalsIgnoreCase(input);
     	} else {
-    		System.out.println("Do you want to save the products? (Y/N)");
+    		System.out.println("Do you want to save/exit: 'Y' or continue: 'N'? (Y/N)");
     		String input = sc.nextLine();
             return !"Y".equalsIgnoreCase(input);
     	}
