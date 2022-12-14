@@ -16,7 +16,5 @@ public class Customer {
         return shoppingBasket;
     }
 
-    public void setShoppingBasket(ShoppingBasket shoppingBasket) {
-        this.shoppingBasket = shoppingBasket;
-    }
+
 }

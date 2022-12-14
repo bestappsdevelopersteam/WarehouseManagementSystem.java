@@ -122,6 +122,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\14-12-2022 15-49-58.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\14-12-2022 16-05-07.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\out\production\warehouse\com\warehouse\11-12-2022 11-36-25.csv">
           <value>
             <Attribute>

@@ -44,7 +44,7 @@ public class FileOrganizatorServiceImpl implements FileOrganizatorService {
                 oneLine.append(CSV_SEPARATOR);
                 oneLine.append(product.getQuantity() <= 0 ? "" : product.getQuantity());
                 oneLine.append(CSV_SEPARATOR);
-                oneLine.append(product.gettype().trim().length() == 0 ? "" : product.gettype());
+                oneLine.append(product.getType().trim().length() == 0 ? "" : product.getType());
                 oneLine.append(CSV_SEPARATOR);
                 oneLine.append(product.getColor().trim().length() == 0 ? "" : product.getColor());
                 oneLine.append(CSV_SEPARATOR);

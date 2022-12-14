@@ -32,9 +32,7 @@ public class Product {
         return product_id;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
+
 
     public String getName() {
         return name;
@@ -60,29 +58,23 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String gettype() {
+    public String getType() {
         return type;
     }
 
-    public void settype(String type) {
-        this.type = type;
-    }
+
 
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
+
 
     public LocalDate getExpires_in() {
         return expires_in;
     }
 
-    public void setExpires_in(LocalDate expires_in) {
-        this.expires_in = expires_in;
-    }
+
     
     @Override
     public String toString() {
