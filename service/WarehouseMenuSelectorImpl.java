@@ -86,15 +86,16 @@ public class WarehouseMenuSelectorImpl implements WarehouseMenuSelector {
     	System.out.println("Enter product quantity: ");
     	int quantity = sc.nextInt();
     	System.out.println("Enter product type: ");
-    	String type = sc.nextLine();
-    	System.out.println("Enter product color: ");
-    	String color = sc.nextLine();
-    	System.out.println("Enter expires in (format - d/MM/yyyy): ");
+		String type = sc.next();
+		System.out.println("Enter product color: ");
+    	String color = sc.next();
+		System.out.println();
+    	System.out.print("Enter expires in (format - d/MM/yyyy): ");
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-    	String input = sc.nextLine();
+    	String input = sc.next();
     	LocalDate expiresIn = LocalDate.parse(input, formatter);
      
-    	employeeService.addProduct(products, new Product(products.size() + 2, name, price, quantity, type, color, expiresIn));
+    	employeeService.addProduct(products, new Product(products.size() + 1, name, price, quantity, type, color, expiresIn));
     }
     
     private void changeProduct(List<Product> products, boolean isPriceChanged, boolean isQuantityChanged, boolean isNameChanged) {
@@ -142,5 +143,6 @@ public class WarehouseMenuSelectorImpl implements WarehouseMenuSelector {
     	String quantity = sc.nextLine();
     	
     	customerService.addProductToShoppingBasket(Integer.parseInt(productId), products, Integer.parseInt(quantity), shoppingBasket);
+
     }
 }

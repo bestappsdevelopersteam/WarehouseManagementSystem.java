@@ -134,7 +134,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void printEmployeesSortedByName(List<Employee> employees) {
-    	employees.sort((e1, e2) -> e1.getFirst_name().compareTo(e2.getFirst_name()));
+    	employees.sort((Employee e1, Employee e2) -> e1.getFirst_name().compareTo(e2.getFirst_name()));
     	printAllEmployees(employees);
     }
     

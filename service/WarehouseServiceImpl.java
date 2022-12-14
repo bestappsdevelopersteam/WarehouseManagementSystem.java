@@ -9,27 +9,27 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.sun.tools.javac.util.StringUtils.toLowerCase;
+//import static com.sun.tools.javac.util.StringUtils.toLowerCase;
 
 public class WarehouseServiceImpl implements WarehouseService {
 	
 	private static final String CUSTOMER_CHOOSE_OPTION = "customer";
 	private static final String EMPLOYEE_CHOOSE_OPTION = "employee";
 	
-    private EmployeeService employeeService = new EmployeeServiceImpl();
-    private CustomerService customerService = new CustomerServiceImpl();
-    private FileOrganizatorService fileOrganizatorService = new FileOrganizatorServiceImpl();
-    private WarehouseMenuSelector warehouseMenuSelector = new WarehouseMenuSelectorImpl();
-    private Scanner sc = new Scanner(System.in);
+    private final EmployeeService employeeService = new EmployeeServiceImpl();
+    private final CustomerService customerService = new CustomerServiceImpl();
+    private final FileOrganizatorService fileOrganizatorService = new FileOrganizatorServiceImpl();
+    private final WarehouseMenuSelector warehouseMenuSelector = new WarehouseMenuSelectorImpl();
+    private final Scanner sc = new Scanner(System.in);
 
     @Override
     public void loginInWarehouse() throws FileNotFoundException {
         Warehouse warehouse = buildWarehouse();
         
-        System.out.println("Welcome to our Shop! Are you Customer Or Employee?");
+        System.out.println("Welcome to our Shop! Are you 'customer' Or 'employee' ?");
         String input = sc.nextLine();
         while (!input.equalsIgnoreCase("customer") && !input.equalsIgnoreCase("employee")) {
-            System.out.println("Invalid input! Please write Customer Or Employee:");
+            System.out.println("Invalid input! Please write 'customer' Or 'employee' :");
             input = sc.nextLine();
         }
         
@@ -37,7 +37,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
     
     private Warehouse buildWarehouse() {
-    	System.out.println("Enter file name to upload the information for employee");
+    	System.out.println("Enter file name 'employee.csv' to upload the information for employee ");
         String fileName1 = sc.nextLine().toLowerCase();
 
         while (!fileName1.equalsIgnoreCase("employee.csv")) {
@@ -47,7 +47,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         }
         List<Employee> employees = (List<Employee>)(fileOrganizatorService.readFile(fileName1, true));
 
-        System.out.println("Enter file name to upload the information for products");
+        System.out.println("Enter file name 'products.csv' to upload the information for products");
         String fileName2 = sc.nextLine().toLowerCase();
 
         while (!fileName2.equalsIgnoreCase("products.csv")) {
@@ -94,19 +94,14 @@ public class WarehouseServiceImpl implements WarehouseService {
     
     private boolean isNeedToBeRepeat(boolean isCustomer) {
     	if (isCustomer) {
-    		System.out.println("Do you want to exit from the menu? (Y/N)");
+    		System.out.println("Do you want to exit from the menu and calculate changes ? (Y/N)");
     		String input = sc.nextLine();
-    		if ("Y".equalsIgnoreCase(input)) {
-    			return false;
-    		}
+            return !"Y".equalsIgnoreCase(input);
     	} else {
     		System.out.println("Do you want to save the products? (Y/N)");
     		String input = sc.nextLine();
-    		if ("Y".equalsIgnoreCase(input)) {
-    			return false;
-    		}    		
+            return !"Y".equalsIgnoreCase(input);
     	}
-    	return true;
     }
     
     public boolean validateInput(String input, boolean isEmployee) {

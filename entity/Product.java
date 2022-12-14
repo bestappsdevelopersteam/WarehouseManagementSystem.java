@@ -60,11 +60,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getType() {
+    public String gettype() {
         return type;
     }
 
-    public void setType(String type) {
+    public void settype(String type) {
         this.type = type;
     }
 
@@ -87,7 +87,7 @@ public class Product {
     @Override
     public String toString() {
     	return "id: " + product_id + " name: " + name 
-    			+ " price: " + price + " quantity: " + quantity + " type: " 
+    			+ " price: " + price + " quantity: " + quantity + " type: "
     			+ type + " color: " + color + " expires in: " + expires_in;
     }
     

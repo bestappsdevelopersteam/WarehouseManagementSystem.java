@@ -31,7 +31,9 @@ public class FileOrganizatorServiceImpl implements FileOrganizatorService {
 	@Override
 	public void writeProductsIntoFile(List<Product> products) {
 		try {
-			FileWriter fileWriter = new FileWriter(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss")) + ".csv");
+			FileWriter fileWriter = new FileWriter(LocalDateTime.now()
+                    .truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter
+                            .ofPattern("dd-MM-yyyy HH-mm-ss")) + ".csv");
             for (Product product : products) {
                 StringBuffer oneLine = new StringBuffer();
                 oneLine.append(product.getProduct_id() <=0 ? "" : product.getProduct_id());
@@ -42,7 +44,7 @@ public class FileOrganizatorServiceImpl implements FileOrganizatorService {
                 oneLine.append(CSV_SEPARATOR);
                 oneLine.append(product.getQuantity() <= 0 ? "" : product.getQuantity());
                 oneLine.append(CSV_SEPARATOR);
-                oneLine.append(product.getType().trim().length() == 0 ? "" : product.getType());
+                oneLine.append(product.gettype().trim().length() == 0 ? "" : product.gettype());
                 oneLine.append(CSV_SEPARATOR);
                 oneLine.append(product.getColor().trim().length() == 0 ? "" : product.getColor());
                 oneLine.append(CSV_SEPARATOR);

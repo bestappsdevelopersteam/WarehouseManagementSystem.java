@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void searchProductByCategory(String category, List<Product> products) {
         for (Product p : products) {
-        	if (p.getType().equals(category)) {
+        	if (p.gettype().equals(category)) {
         		System.out.println(p.toString());
         	}
         }
@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void addProductToShoppingBasket(int productId, List<Product> products, int quantity, ShoppingBasket shoppingBasket) {
     	for (Product p : products) {
     		if (p.getProduct_id() == productId && p.getQuantity() >= quantity) {
-    			shoppingBasket.getProducts().add(new Product(p.getProduct_id(), p.getName(), p.getPrice(), quantity, p.getType(), p.getColor(), p.getExpires_in()));
+    			shoppingBasket.getProducts().add(new Product(p.getProduct_id(), p.getName(), p.getPrice(), quantity, p.gettype(), p.getColor(), p.getExpires_in()));
     			p.setQuantity(p.getQuantity() - quantity);
     		} else if (p.getProduct_id() == productId && p.getQuantity() < quantity) {
     			throw new ProductQuantityMissingException();
