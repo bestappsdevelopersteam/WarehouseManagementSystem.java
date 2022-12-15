@@ -11,119 +11,122 @@ import java.util.Scanner;
 
 //import static com.sun.tools.javac.util.StringUtils.toLowerCase;
 
+
 public class WarehouseServiceImpl implements WarehouseService {
-	
-	private static final String CUSTOMER_CHOOSE_OPTION = "customer";
-	private static final String EMPLOYEE_CHOOSE_OPTION = "employee";
-	
-    private final EmployeeService employeeService = new EmployeeServiceImpl();
-    private final CustomerService customerService = new CustomerServiceImpl();
-    private final FileOrganizatorService fileOrganizatorService = new FileOrganizatorServiceImpl();
-    private final WarehouseMenuSelector warehouseMenuSelector = new WarehouseMenuSelectorImpl();
-    private final Scanner sc = new Scanner(System.in);
+
+
+    private static final String CUSTOMER_CHOOSE_OPTION = "customer";
+    private static final String EMPLOYEE_CHOOSE_OPTION = "employee";
+
+    private final EmployeeService employeeService = new EmployeeServiceImpl ();
+    private final CustomerService customerService = new CustomerServiceImpl ();
+    private final FileOrganizatorService fileOrganizatorService = new FileOrganizatorServiceImpl ();
+    private final WarehouseMenuSelector warehouseMenuSelector = new WarehouseMenuSelectorImpl ();
+    private final Scanner sc = new Scanner (System.in);
 
     @Override
     public void loginInWarehouse() throws FileNotFoundException {
-        Warehouse warehouse = buildWarehouse();
-        
-        System.out.println("Welcome to our Shop! Are you 'customer' Or 'employee' ?");
-        String input = sc.nextLine();
-        while (!input.equalsIgnoreCase("customer") && !input.equalsIgnoreCase("employee")) {
-            System.out.println("Invalid input! Please write 'customer' Or 'employee' :");
-            input = sc.nextLine();
+        Warehouse warehouse = buildWarehouse ();
+
+        System.out.println ("Welcome to our Shop! Are you 'customer' Or 'employee' ?");
+        String input = sc.nextLine ();
+        while (!input.equalsIgnoreCase ("customer") && !input.equalsIgnoreCase ("employee")) {
+            System.out.println ("Invalid input! Please write 'customer' Or 'employee' :");
+            input = sc.nextLine ();
         }
-        
-        selectOptions(input, warehouse);
+
+        selectOptions (input, warehouse);
     }
-    
+
     private Warehouse buildWarehouse() {
-    	System.out.println("Enter file name 'employee.csv' to upload the information for employee ");
-        String fileName1 = sc.nextLine().toLowerCase();
+        System.out.println ("Enter file name 'employee.csv' to upload the information for employee ");
+        String fileName1 = sc.nextLine ().toLowerCase ();
 
-        while (!fileName1.equalsIgnoreCase("employee.csv")) {
-            System.out.println("Invalid input! Please write employee.csv :");
-            fileName1 = sc.nextLine().toLowerCase();
+        while (!fileName1.equalsIgnoreCase ("employee.csv")) {
+            System.out.println ("Invalid input! Please write employee.csv :");
+            fileName1 = sc.nextLine ().toLowerCase ();
 
         }
-        List<Employee> employees = (List<Employee>)(fileOrganizatorService.readFile(fileName1, true));
+        List<Employee> employees = (List<Employee>) (fileOrganizatorService.readFile (fileName1, true));
 
-        System.out.println("Enter file name 'products.csv' to upload the information for products");
-        String fileName2 = sc.nextLine().toLowerCase();
+        System.out.println ("Enter file name 'products.csv' to upload the information for products");
+        String fileName2 = sc.nextLine ().toLowerCase ();
 
-        while (!fileName2.equalsIgnoreCase("products.csv")) {
-            System.out.println("Invalid input! Please write products.csv :");
+        while (!fileName2.equalsIgnoreCase ("products.csv")) {
+            System.out.println ("Invalid input! Please write products.csv :");
 
-            fileName2 = sc.nextLine().toLowerCase();
+            fileName2 = sc.nextLine ().toLowerCase ();
         }
-        List<Product> products = (List<Product>)(fileOrganizatorService.readFile(fileName2, false));
+        List<Product> products = (List<Product>) (fileOrganizatorService.readFile (fileName2, false));
 
-        return new Warehouse(products, employees);
+        return new Warehouse (products, employees);
     }
-    
+
     private void selectOptions(String input, Warehouse warehouse) {
-    	Customer customer = new Customer();
-    	boolean isNeedToBeRepeat = true;
+        Customer customer = new Customer ();
+        boolean isNeedToBeRepeat = true;
         while (isNeedToBeRepeat) {
-        	processMenu(input);
-        	if (CUSTOMER_CHOOSE_OPTION.equalsIgnoreCase(input)) {
-        		System.out.println("Enter option number: ");
-        		String optionNumber = sc.nextLine();
-        		validateInput(optionNumber, false);
-        		warehouseMenuSelector.selectOption(Integer.parseInt(optionNumber), false, warehouse, customer);
-        		isNeedToBeRepeat = isNeedToBeRepeat(true);
-        	} else {
-        		System.out.println("Enter option number: ");
-        		String optionNumber = sc.nextLine();
-        		validateInput(optionNumber, true);
-        		warehouseMenuSelector.selectOption(Integer.parseInt(optionNumber), true, warehouse, null);
-        		isNeedToBeRepeat = isNeedToBeRepeat(false);
-        	}
+            processMenu (input);
+            if (CUSTOMER_CHOOSE_OPTION.equalsIgnoreCase (input)) {
+                System.out.println ("Enter option number: ");
+                String optionNumber = sc.nextLine ();
+                validateInput (optionNumber, false);
+                warehouseMenuSelector.selectOption (Integer.parseInt (optionNumber), false, warehouse, customer);
+                isNeedToBeRepeat = isNeedToBeRepeat (true);
+            } else {
+                System.out.println ("Enter option number: ");
+                String optionNumber = sc.nextLine ();
+                validateInput (optionNumber, true);
+                warehouseMenuSelector.selectOption (Integer.parseInt (optionNumber), true, warehouse, null);
+                isNeedToBeRepeat = isNeedToBeRepeat (false);
+            }
         }
-        
-        fileOrganizatorService.writeProductsIntoFile(warehouse.getProducts());
+
+        fileOrganizatorService.writeProductsIntoFile (warehouse.getProducts ());
     }
 
     private void processMenu(String option) {
         switch (option) {
             case CUSTOMER_CHOOSE_OPTION:
-                customerService.printMenu(); break;
+                customerService.printMenu ();
+                break;
             case EMPLOYEE_CHOOSE_OPTION:
-                employeeService.printMenu();
+                employeeService.printMenu ();
         }
     }
-    
+
     private boolean isNeedToBeRepeat(boolean isCustomer) {
-    	if (isCustomer) {
-    		System.out.println("Do you want to exit from the menu and calculate changes ? (Y/N)");
-    		String input = sc.nextLine();
-            return !"Y".equalsIgnoreCase(input);
-    	} else {
-    		System.out.println("Do you want to save/exit: 'Y' or continue: 'N'? (Y/N)");
-    		String input = sc.nextLine();
-            return !"Y".equalsIgnoreCase(input);
-    	}
+        if (isCustomer) {
+            System.out.println ("Do you want to exit from the menu and calculate changes ? (Y/N)");
+            String input = sc.nextLine ();
+            return !"Y".equalsIgnoreCase (input);
+        } else {
+            System.out.println ("Do you want to save/exit: 'Y' or continue: 'N'? (Y/N)");
+            String input = sc.nextLine ();
+            return !"Y".equalsIgnoreCase (input);
+        }
     }
-    
+
     public boolean validateInput(String input, boolean isEmployee) {
-		try {
-			if (isEmployee) {
-				int commandNumber = Integer.parseInt(input);
-				if (commandNumber < 1 || commandNumber > 16) {
-					System.out.println("Invalid command! Try again! The input must be number between 1 and 16 ");
-					return false;
-				}
-			} else {
-		        int commandNumber = Integer.parseInt(input);
-		        if (commandNumber < 1 || commandNumber > 5) {
-		            System.out.println("Invalid command! Try again! The input must be number between 1 and 5 ");
-		            return false;
-		        }
-			}
-			
+        try {
+            if (isEmployee) {
+                int commandNumber = Integer.parseInt (input);
+                if (commandNumber < 1 || commandNumber > 16) {
+                    System.out.println ("Invalid command! Try again! The input must be number between 1 and 16 ");
+                    return false;
+                }
+            } else {
+                int commandNumber = Integer.parseInt (input);
+                if (commandNumber < 1 || commandNumber > 5) {
+                    System.out.println ("Invalid command! Try again! The input must be number between 1 and 5 ");
+                    return false;
+                }
+            }
+
             return true;
         } catch (Exception NumberFormatException) {
-            System.out.println("Invalid command! Try again!");
+            System.out.println ("Invalid command! Try again!");
             return false;
         }
-	}
+    }
 }

@@ -32,8 +32,9 @@ public class Warehouse {
         return employees;
     }
 
-    public static Warehouse parseDataToObject(String [] inputEmployees, String [] inputProducts) {
+/*    public static Warehouse parseDataToObject(String [] inputEmployees, String [] inputProducts) {
         return null;
 
     }
+*/
 }
