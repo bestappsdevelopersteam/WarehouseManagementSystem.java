@@ -52,6 +52,7 @@ public class WarehouseMenuSelectorImpl implements WarehouseMenuSelector {
     private void printProduct(List<Product> products) {
     	System.out.println("Enter product id: ");
     	int productId = sc.nextInt();
+		String empty = sc.nextLine();
     	System.out.println("Enter product name: ");
     	String name = sc.nextLine();
     	

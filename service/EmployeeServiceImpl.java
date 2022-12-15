@@ -39,13 +39,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     	if (id != 0) {
     		for (Product p : products) {
     			if(id == p.getProduct_id()) {
-    				System.out.println(p.toString());
+    				System.out.println(p);
     			}
     		}
     	} else if (productName != null) {
     		for (Product p : products) {
     			if (productName.equals(p.getName())) {
-    				System.out.println(p.toString());
+    				System.out.println(p);
     			}
     		}
     	}
@@ -55,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void printAllProductsWithPriceHigherThanCurrent(List<Product> products, Double price) {
     	for (Product p : products) {
     		if (p.getPrice().compareTo(price) >= 0) {
-    			System.out.println(p.toString());
+    			System.out.println(p);
     		}
     	}
     }
@@ -64,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void printAllProductsWithPriceLowerThanCurrent(List<Product> products, Double price) {
     	for (Product p : products) {
     		if (p.getPrice().compareTo(price) < 0) {
-    			System.out.println(p.toString());
+    			System.out.println(p);
     		}
     	}
     }
@@ -73,7 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void printAllProductsWithQuantityHigherThanCurrent(List<Product> products, Integer quantity) {
     	for (Product p : products) {
     		if (p.getQuantity().compareTo(quantity) >= 0) {
-    			System.out.println(p.toString());
+    			System.out.println(p);
     		}
     	}
     }
@@ -82,7 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void printAllProductsWithQuantityLowerThanCurrent(List<Product> products, Integer quantity) {
     	for (Product p : products) {
     		if (p.getQuantity().compareTo(quantity) < 0) {
-    			System.out.println(p.toString());
+    			System.out.println(p);
     		}
     	}
     }
@@ -100,7 +100,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         		break;
         	}
         }
-    }
+    } // one method for all
 
     @Override
     public void changeProductQuantity(List<Product> products, int productId, int quantity) {
@@ -134,7 +134,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void printEmployeesSortedByName(List<Employee> employees) {
-    	employees.sort((Employee e1, Employee e2) -> e1.getFirst_name().compareTo(e2.getFirst_name()));
+    	employees.sort((e1, e2) -> e1.getFirst_name().compareTo(e2.getFirst_name()));
     	printAllEmployees(employees);
     }
     

@@ -11,5 +11,4 @@ public class WarehouseManagementSystem {
     	WarehouseService warehouseService = new WarehouseServiceImpl();
     	warehouseService.loginInWarehouse();
     }
-
 }
